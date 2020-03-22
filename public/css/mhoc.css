@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.bg-mhoc {
+    background-color: #006B3E;
+}
+
+svg .seat {
+    cursor: pointer;
+    transition: all 800ms;
+}
+
+/* parliament colors */
+svg .seat.CON { fill: #3d9fe7 }
+svg .seat.LAB { fill: #e70338; }
+svg .seat.CLIB { fill: #404040; }
+svg .seat.LD { fill:#faa61a; }
+svg .seat.LPUK { fill:#a608f5; }
+svg .seat.PC { fill:#008142; }
+svg .seat.DRF { fill: #b3b8d8; }
+svg .seat.TPM { fill:#ff00ea; }
+svg .seat.IND { fill:rgb(151,156,159); }
+
+/* common */
+svg .seat.vacant { fill: #FFFFFF }
+svg .seat.no-party { fill: #909090; }
