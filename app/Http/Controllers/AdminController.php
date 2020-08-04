@@ -131,11 +131,11 @@ class AdminController extends Controller
                 /*
                  * The username shown in the message
                  */
-                "username" => "MHoC GEXVI Results",
+                "username" => "MHoC GEXIV Results",
                 /*
                  * The image location for the senders image
                  */
-                "avatar_url" => "https://GEXVI.lieselta.live/img/mhoc.png",
+                "avatar_url" => "https://GEXIV.lieselta.live/img/mhoc.png",
                 /*
                  * Whether or not to read the message in Text-to-speech
                  */
@@ -169,8 +169,8 @@ class AdminController extends Controller
 
                         "footer" =>
                         [
-                            "text" => "MHoC GEXVI Results",
-                            "icon_url" => "https://GEXVI.lieselta.live/img/mhoc.png"
+                            "text" => "MHoC GEXIV Results",
+                            "icon_url" => "https://GEXIV.lieselta.live/img/mhoc.png"
                         ]
                     ]
                 ]
@@ -202,7 +202,7 @@ class AdminController extends Controller
             return redirect()->back()->with('success', 'Constituency unpublished.');
         }
     }
-
+ 
     public function addSixCandidates(Request $request, $constituency_code)
     {
         $constituency = Constituency::where('code', $constituency_code)->firstOrFail();

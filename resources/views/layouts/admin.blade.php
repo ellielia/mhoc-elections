@@ -2,8 +2,8 @@
 <head>
     <!--Meta-->
     <meta charset="UTF-8">
-    <title>MHoC GEXVI Admin</title>
-    <meta property="og:site_name" content="MHoC GEXVI Admin"/>
+    <title>MHoC GEXIV Admin</title>
+    <meta property="og:site_name" content="MHoC GEXIV Admin"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--MDBoostrap-->
     <!-- Font Awesome -->
@@ -40,7 +40,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-mhoc">
         <div class="container">
-            <a class="navbar-brand" href="{{route('index')}}"><strong>MHoC GEXVI Admin</strong></a>
+            <a class="navbar-brand" href="{{route('index')}}"><strong>MHoC GEXIV Admin</strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

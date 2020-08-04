@@ -3,10 +3,10 @@
 <head>
     <!--Meta-->
     <meta charset="UTF-8">
-    <title>@yield('title', '') - MHoC GEXVI Results</title>
-    <meta property="og:site_name" content="MHoC GEXVI Results"/>
+    <title>@yield('title', '') - MHoC GEXIV Results</title>
+    <meta property="og:site_name" content="MHoC GEXIV Results"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="@yield('title', '') - MHoC GEXVI Results" />
+    <meta property="og:title" content="@yield('title', '') - MHoC GEXIV Results" />
     <meta property="og:description" content="@yield('description')" />
     <meta property="og:image" content="@yield('image',asset('img/mhoc.png'))"/>
     <meta property="og:url" content="{{\Illuminate\Support\Facades\URL::current()}}"/>
@@ -48,7 +48,7 @@
         <div class="container">
             <a class="navbar-brand" href="{{route('index')}}">
                 <img src="@yield('nav-bar-img',asset('img/HoCIconWhite.png'))" width="30" class="d-inline-block align-top" alt="">
-                &nbsp;<span class="d-inline-block align-centre font-weight-bold" style="margin-top: 4.5px;">MHoC GEXVI Results</span>
+                &nbsp;<span class="d-inline-block align-centre font-weight-bold" style="margin-top: 4.5px;">MHoC GEXIV Results</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

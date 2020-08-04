@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Home')
-@section('description', 'Results of MHoC\'s 13th General Election, with live updates and seat maps.')
+@section('description', 'Results of MHoC\'s 14th General Election')
 @section('content')
 @php
 $parties = \App\Party::all();
