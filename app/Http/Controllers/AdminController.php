@@ -131,11 +131,11 @@ class AdminController extends Controller
                 /*
                  * The username shown in the message
                  */
-                "username" => "MHoC GEXIII Results",
+                "username" => "MHoC GEXVI Results",
                 /*
                  * The image location for the senders image
                  */
-                "avatar_url" => "https://gexiii.lieselta.live/img/mhoc.png",
+                "avatar_url" => "https://GEXVI.lieselta.live/img/mhoc.png",
                 /*
                  * Whether or not to read the message in Text-to-speech
                  */
@@ -169,8 +169,8 @@ class AdminController extends Controller
 
                         "footer" =>
                         [
-                            "text" => "MHoC GEXIII Results",
-                            "icon_url" => "https://gexiii.lieselta.live/img/mhoc.png"
+                            "text" => "MHoC GEXVI Results",
+                            "icon_url" => "https://GEXVI.lieselta.live/img/mhoc.png"
                         ]
                     ]
                 ]

@@ -3,10 +3,10 @@
 <head>
     <!--Meta-->
     <meta charset="UTF-8">
-    <title>@yield('title', '') - MHoC GEXIII Results</title>
-    <meta property="og:site_name" content="MHoC GEXIII Results"/>
+    <title>@yield('title', '') - MHoC GEXVI Results</title>
+    <meta property="og:site_name" content="MHoC GEXVI Results"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="@yield('title', '') - MHoC GEXIII Results" />
+    <meta property="og:title" content="@yield('title', '') - MHoC GEXVI Results" />
     <meta property="og:description" content="@yield('description')" />
     <meta property="og:image" content="@yield('image',asset('img/mhoc.png'))"/>
     <meta property="og:url" content="{{\Illuminate\Support\Facades\URL::current()}}"/>
@@ -162,17 +162,17 @@
                     @php
                     $vote_share = number_format(($c->constituency_votes / $constituency->totalVotes() * 100) - ($c->previous_constituency_votes / $constituency->totalVotes() * 100), 1)
                     @endphp
-                    <li title="GEXII: {{number_format($c->previous_constituency_votes)}}">Vote share change: @if($vote_share > 0)+@endif{{$vote_share}}</li>
+                    <li title="GEXVI: {{number_format($c->previous_constituency_votes)}}">Vote share change: @if($vote_share > 0)+@endif{{$vote_share}}</li>
                     @endif
                     @if ($c->previous_constituency_votes > 0)
-                        <li class="text-muted">GEXII: {{number_format($c->previous_constituency_votes)}}</li>
+                        <li class="text-muted">GEXVI: {{number_format($c->previous_constituency_votes)}}</li>
                     @endif
                 </ul>
             </div>
         </div>
     </div>
     @endforeach
-    <div style="text-align:right;" class="text-muted">Change compared with GEXII</div>
+    <div style="text-align:right;" class="text-muted">Change compared with GEXVI</div>
     <hr>
     @if($constituency->declared)
     <p style="text-align:right;" class="text-muted">Declared {{$constituency->declaredAtHuman()}} ({{$constituency->declaredAtPretty()}})</p>

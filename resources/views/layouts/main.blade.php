@@ -3,10 +3,10 @@
 <head>
     <!--Meta-->
     <meta charset="UTF-8">
-    <title>@yield('title', '') - MHoC GEXIII Results</title>
-    <meta property="og:site_name" content="MHoC GEXIII Results"/>
+    <title>@yield('title', '') - MHoC GEXVI Results</title>
+    <meta property="og:site_name" content="MHoC GEXVI Results"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="@yield('title', '') - MHoC GEXIII Results" />
+    <meta property="og:title" content="@yield('title', '') - MHoC GEXVI Results" />
     <meta property="og:description" content="@yield('description')" />
     <meta property="og:image" content="@yield('image',asset('img/mhoc.png'))"/>
     <meta property="og:url" content="{{\Illuminate\Support\Facades\URL::current()}}"/>
@@ -48,7 +48,7 @@
         <div class="container">
             <a class="navbar-brand" href="{{route('index')}}">
                 <img src="@yield('nav-bar-img',asset('img/HoCIconWhite.png'))" width="30" class="d-inline-block align-top" alt="">
-                &nbsp;<span class="d-inline-block align-centre font-weight-bold" style="margin-top: 4.5px;">MHoC GEXIII Results</span>
+                &nbsp;<span class="d-inline-block align-centre font-weight-bold" style="margin-top: 4.5px;">MHoC GEXVI Results</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,7 +88,7 @@
         </div>
     </nav>
     <div style="margin:0;border-radius:0;" class="alert alert-light"><div class="container">
-        <span class="red-text"><i class="fas fa-circle"></i> <b>LIVE</b></span>&nbsp;Watch the Sky News stream <a href="#">here</a>&nbsp;|&nbsp;Check out #press-announcements on Discord for live constituency results
+       Check out #press-announcements on Discord for live constituency results
     </div>
 </header>
 <!-- Full Height Modal Right -->
@@ -119,7 +119,7 @@
 <footer class="page-footer font-small bg-mhoc pt-4">
     <!-- Footer Text -->
     <div class="container text-center pb-4">
-            <p>Developed by /u/ellielia</p><br/>
+            <p>Developed by Liesel because she hates everything good in life.</p><br/>
             <a href="{{route('admin.auth.login')}}">Login
             </a>
     </div>
