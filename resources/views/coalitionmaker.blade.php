@@ -23,7 +23,7 @@
 
                 <div class="dropdown-menu">
                     @foreach ($parties as $p)
-                        <a class="dropdown-item" href="#" onclick="addParty({{$p->id}})">{{$p->name}}</a>
+                        <a class="dropdown-item" href="#" onclick="addParty('{{$p->code}}')">{{$p->name}}</a>
                     @endforeach
                 </div>
                 <!-- Basic dropdown -->
@@ -37,11 +37,41 @@
         $('document').ready(function () {
            parties = <?php echo(json_encode($parties)) ?>;
            partiesPills = $('#partiesPills');
-           console.info(parties)
+           console.info(parties);
+        });
+
+        labels = [];
+        colours = [];
+        data = [];
+        labels.push("Coalition");
+        colours.push("#000");
+        chart = new Chart(document.getElementById("graph"), {
+            "type": "horizontalBar",
+            "data": {
+                "labels": labels,
+                "datasets": [{
+                    "data": data,
+                    "fill": false,
+                    "backgroundColor": colours,
+                    "borderWidth": 1
+                }]
+            },
+            "options": {
+                "legend": {
+                    display: false
+                },
+                "scales": {
+                    "xAxes": [{
+                        "ticks": {
+                            "beginAtZero": true
+                        }
+                    }]
+                }
+            }
         });
 
         function addParty (code) {
-            party = parties[code - 1];
+            party = parties.find(obj => obj.code == code);
             console.log('Adding party:');
             console.log(party);
             if (addedParties.includes(party)) {
@@ -50,7 +80,7 @@
             }
             addedParties.push(party);
             var pill = $("<span></span>").addClass('badge badge-pill ml-2 ' + party.code).css("background-color", party.hex);
-            $(pill).html(`${party.name} <a class='text-white' onclick='removeParty(${party.id})' href='#'><i class='fa fa-times'></i>`);
+            $(pill).html(`${party.name} <a class='text-white' onclick='removeParty("${party.code}")' href='#'><i class='fa fa-times'></i>`);
             partiesPills.append(pill);
             console.log('Parties:');
             console.log(addedParties);
@@ -58,7 +88,7 @@
         }
 
         function removeParty (code) {
-            party = parties[code - 1];
+            party = parties.find(obj => obj.code == code)
             console.log('Removing party:');
             console.log(party);
             if (addedParties.includes(party)) {
@@ -71,6 +101,9 @@
         }
 
         function updateGraph() {
+            chart.data.labels.pop();
+            chart.data.datasets.forEach((dataset) => { dataset.data.pop() })
+            chart.update()
             labels = [];
             colours = [];
             data = [];
@@ -92,7 +125,7 @@
                 $("#status").text("This coalition has " + seats + " seats, and can form a majority government.");
             }
             $("#chart").html('');
-            new Chart(document.getElementById("graph"), {
+            chart = new Chart(document.getElementById("graph"), {
                 "type": "horizontalBar",
                 "data": {
                     "labels": labels,

@@ -65,9 +65,6 @@
                     <li class="nav-item {{ Request::is('constituencies') || Request::is('constituencies/*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{route('constituencies')}}">Constituencies</a>
                     </li>
-                    <li class="nav-item {{ Request::is('coalitionmaker') || Request::is('coalitionmaker/*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{route('coalitionmaker')}}">Coalition Maker</a>
-                    </li>
                     <li class="nav-item {{ Request::is('candidates') || Request::is('candidates/*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{route('candidates')}}">Candidates</a>
                     </li>

@@ -19,7 +19,8 @@ Route::get('/stateoftheparties', 'PageController@stateOfTheParties')->name('stat
 Route::get('/constituencies', 'PageController@constituencies')->name('constituencies');
 Route::get('/constituencies/{code}', 'PageController@constituencyView')->name('constituencies.view');
 Route::get('/constituencies/{code}/stream', 'PageController@constituencyViewStream')->name('constituencies.view.stream');
-Route::view('/coalitionmaker', 'coalitionmaker')->name('coalitionmaker');
+//Route::view('/coalitionmaker', 'coalitionmaker')->name('coalitionmaker');
+Route::get('/coalitionmaker', function() { abort(404); })->name('coalitionmaker');
 Route::get('/candidates', 'PageController@candidates')->name('candidates');
 
 //Admin
@@ -47,5 +48,6 @@ Route::prefix('admin')->group(function () {
     });
     //Load results
     Route::post('/loadresults', 'AdminController@loadResultsFromFile')->name('admin.loadresults');
+    Route::post('/loadcandidates', 'AdminController@loadCandidatesFromFile')->name('admin.loadcandidates');
     Route::post('/loadfacesteals', 'AdminController@loadFacestealsFromFile')->name('admin.loadfacesteals');
 });

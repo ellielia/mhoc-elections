@@ -1,4 +1,6 @@
 @extends('layouts.main')
+@section('title', 'State of the Parties')
+@section('description', 'Total seat and vote counts for the parties')
 @section('content')
 @php
 $parties = \App\Party::all();

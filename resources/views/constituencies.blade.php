@@ -1,5 +1,6 @@
 @extends('layouts.main')
-
+@section('title', 'Constituencies')
+@section('description', 'The constituencies being contested this election')
 @section('content')
 <div class="container pt-4">
     <h2>Constituencies</h2>

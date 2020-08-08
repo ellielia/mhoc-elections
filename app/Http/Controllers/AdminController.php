@@ -102,9 +102,9 @@ class AdminController extends Controller
     public function publishConstituency($code)
     {
         $constituency = Constituency::where('code', $code)->firstOrFail();
-        if ($constituency->published != true) {
-            $constituency->published = false;
-            $constituency->declared = false;
+        if (!$constituency->published) {
+            $constituency->published = true;
+            $constituency->declared = true;
             $constituency->published_at = date('Y-m-d H:i:s');
             $constituency->declared_at = date('Y-m-d H:i:s');
             $constituency->save();
@@ -187,7 +187,7 @@ class AdminController extends Controller
                     "Content-Type: application/json"
                 ]
             ]);
-            $response = curl_exec($ch);
+            //$response = curl_exec($ch);
             error_log(config('services.discord.declarations_webhook'));
             if (curl_error($ch)) {
                 $error = curl_error($ch);
@@ -290,6 +290,77 @@ class AdminController extends Controller
             $constituency->turnout = $r->turnout;
             $constituency->save();
             echo(" -- FINISHED");
+        }
+    }
+
+    public function loadCandidatesFromFile(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required',
+        ]);
+        $uploadedFile = $request->file('file')->get();
+        echo('Processing candidates..');
+        $json = json_decode($uploadedFile);
+        foreach($json as $constituency) {
+            //Show constituency, check if it is in the database
+            echo("<br><br>");
+            echo("<b>Processing ".$constituency->Constituency."...</b>" );
+            $dbConstituency = Constituency::where(strtolower('name'), strtolower($constituency->Constituency))->first();
+            if (!$dbConstituency) { echo (' -- FAIL'); continue; }
+
+            //Get candidates for each party
+            //These strings are not candidates
+            $notCandidates = [
+                "Conservative and Unionist Party",
+                "Labour Party",
+                "Liberal Democrats",
+                "Libertarian Party UK",
+                "People's Unity Party",
+                "The People's Movement",
+                "Democratic Reformist Front",
+                "SDLP",
+                "TPM",
+                "Labour",
+                "DRF",
+                "Conservative Party",
+                "PUP",
+                "N/A"
+            ];
+
+            //Convert thing to array
+            $candidatesArray = $array = json_decode(json_encode($constituency), true);
+
+            //Go over array, skip irrelvant fields
+            foreach($candidatesArray as $key => $candidate) {
+                if ($key == "Constituency") { continue; }
+
+                //Is the candidate field one of the not candidate strings?
+                if (in_array($candidate, $notCandidates)) { continue; }
+                
+                //Print candidate
+                echo "<br>$key: $candidate";
+
+                //Find party
+                //but... is it HungryJacksVEVO?
+                if ($key != "HungryJacksVEVO") { 
+                    $party = Party::where(strtolower('name'), strtolower($key))->first();
+                } else {
+                    $party = Party::where(strtolower('name'), 'independents')->first();
+                }
+
+                //Add candidate
+                $dbCandidate = new Candidate();
+                $dbCandidate->name = $candidate;
+                $dbCandidate->party_id = $party->id;
+                $dbCandidate->mp = false;
+                $dbCandidate->description = null;
+                $dbCandidate->constituency_id = $dbConstituency->id;
+                $dbCandidate->constituency_votes = 0;
+                $dbCandidate->save();
+
+                //Added!
+                echo (' -- Added!');
+            }
         }
     }
 

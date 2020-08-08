@@ -73,6 +73,12 @@
             <input type="file" name="file" id="">
             <input type="submit" value="Submit">
             </form>
+            <h3>Load candidates from file</h3>
+            <form action="{{route('admin.loadcandidates')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file" id="">
+            <input type="submit" value="Submit">
+            </form>
             <h3>Load facesteals from file</h3>
             <form action="{{route('admin.loadfacesteals')}}" method="post" enctype="multipart/form-data">
             @csrf

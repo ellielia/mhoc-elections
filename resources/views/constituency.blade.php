@@ -117,17 +117,12 @@
                     @php
                     $vote_share = number_format(($c->constituency_votes / $constituency->totalVotes() * 100) - ($c->previous_constituency_votes / $constituency->totalVotes() * 100), 1)
                     @endphp
-                    <li title="GEXIV: {{number_format($c->previous_constituency_votes)}}">Vote share change: @if($vote_share > 0)+@endif{{$vote_share}}</li>
-                    @endif
-                    @if ($c->previous_constituency_votes > 0)
-                        <li class="text-muted">GEXIV: {{number_format($c->previous_constituency_votes)}}</li>
                     @endif
                 </ul>
             </div>
         </div>
     </div>
     @endforeach
-    <div style="text-align:right;" class="text-muted">Change compared with GEXIV</div>
     <hr>
     @if($constituency->declared)
     <p style="text-align:right;" class="text-muted">Declared {{$constituency->declaredAtHuman()}} ({{$constituency->declaredAtPretty()}})</p>
