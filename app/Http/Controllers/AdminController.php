@@ -68,7 +68,7 @@ class AdminController extends Controller
     {
         $constituency = Constituency::where('code', $code)->firstOrFail();
         $candidates = $constituency->candidates;
-        $next = Constituency::where('id', '>', $constituency->id)->first();
+        $next = Constituency::where('stream_order', $constituency->stream_order + 1)->first();
         return view('admin.constituency', compact('constituency', 'candidates', 'next'));
     }
 

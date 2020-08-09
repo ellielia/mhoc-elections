@@ -29,17 +29,19 @@
             <table id="undeclaredCont" class="table table-bordered table-hover">
                 <thead>
                 <th>Name</th>
+                <th>Order</th>
                 </thead>
                 <tbody>
                 @foreach ($undeclaredCont as $c)
                     <tr>
                         <td><a href="{{route('admin.constituency', $c->code)}}">{{$c->name}}</a></td>
+                        <td>{{$c->stream_order}}</td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
             <script>
-                $('#undeclaredCont').DataTable({"bSort":false});
+                $('#undeclaredCont').DataTable({"bSort":true});
             </script>
         </div>
     </div>
