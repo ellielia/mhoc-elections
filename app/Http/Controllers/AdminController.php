@@ -135,7 +135,7 @@ class AdminController extends Controller
                 /*
                  * The image location for the senders image
                  */
-                "avatar_url" => "https://GEXIV.lieselta.live/img/mhoc.png",
+                "avatar_url" => "https://gexiii.lieselta.live/img/mhoc.png",
                 /*
                  * Whether or not to read the message in Text-to-speech
                  */
@@ -156,6 +156,8 @@ class AdminController extends Controller
                         // Set the title for your embed
                         "title" => $constituency->name,
 
+                        "url" => route('constituencies.view', $constituency->code),
+
                         "fields" => $fields,
 
                         "description" => $embed_description,
@@ -170,7 +172,7 @@ class AdminController extends Controller
                         "footer" =>
                         [
                             "text" => "MHoC GEXIV Results",
-                            "icon_url" => "https://GEXIV.lieselta.live/img/mhoc.png"
+                            "icon_url" => "https://gexiii.lieselta.live/img/mhoc.png"
                         ]
                     ]
                 ]
@@ -180,14 +182,14 @@ class AdminController extends Controller
 
             $ch = curl_init();
             curl_setopt_array( $ch, [
-                CURLOPT_URL => Env('DISCORD_DECLARATIONS_WEBHOOK'),
+                CURLOPT_URL => config('services.discord.declarations_webhook'),
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => $hook,
                 CURLOPT_HTTPHEADER => [
                     "Content-Type: application/json"
                 ]
             ]);
-            //$response = curl_exec($ch);
+            $response = curl_exec($ch);
             error_log(config('services.discord.declarations_webhook'));
             if (curl_error($ch)) {
                 $error = curl_error($ch);
@@ -272,17 +274,20 @@ class AdminController extends Controller
                     case 'lpuk':
                         $c->constituency_votes = $r->LPUK;
                     break;
-                    case 'drf':
-                        $c->constituency_votes = $r->DRF;
-                    break;
-                    case 'll':
-                        $c->constituency_votes = $r->LL;
+                    case 'pup':
+                        $c->constituency_votes = $r->PUP;
                     break;
                     case 'tpm':
                         $c->constituency_votes = $r->TPM;
                     break;
-                    case 'snp':
-                        $c->constituency_votes = $r->SNP;
+                    case 'drf':
+                        $c->constituency_votes = $r->DRF;
+                    break;
+                    case 'sdlp':
+                        $c->constituency_votes = $r->SDLP;
+                    break;
+                    case 'ind':
+                        $c->constituency_votes = $r->IND;
                     break;
                 }
                 $c->save();

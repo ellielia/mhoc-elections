@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function () {
     Route::get('auth/callback', 'AdminController@redditCallback')->name('admin.auth.callback');
     //Temporary
     Route::get('auth', function() {
-        Auth::login(User::find(1));
+        //Auth::login(User::find(1));
     });
     //Load results
     Route::post('/loadresults', 'AdminController@loadResultsFromFile')->name('admin.loadresults');
